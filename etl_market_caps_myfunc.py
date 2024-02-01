@@ -31,8 +31,10 @@ def extract_v2(url):
     for row in rows:
         col = row.find_all("td")
         if len(col) != 0:
+            # data_dict = {"Name": col[1].find_all("a")[1],
+            #             "MC_USD_Billion": col[2].text.split("\n")[0]}
             data_dict = {"Name": col[1].find_all("a")[1],
-                        "MC_USD_Billion": col[2].text.split("\n")[0]}
+            "MC_USD_Billion": float(col[2].contents[0][:-1])}
             df1 = pd.DataFrame(data_dict, index=[0])
             df = pd.concat([df,df1], ignore_index=True)
     log_progress(message="Data has been extracted")
