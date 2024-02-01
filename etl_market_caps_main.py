@@ -8,7 +8,10 @@ db_name="Banks.db"
 table_name="Largest_banks"
 
 
-market_caps_table = fun.extract(url=url)
+# market_caps_table = fun.extract(url=url)
+
+# Alternative way by using BeautifulSoup
+market_caps_table = fun.extract_v2(url=url)
 
 market_caps_table = fun.transform(df=market_caps_table)
 
